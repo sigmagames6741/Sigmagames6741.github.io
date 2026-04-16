@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff6347">
+    <title>Pizza Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <div class="brand-wrap">
+                <div class="brand-logo">🍕</div>
+                <div>
+                    <h1>Pizza Edition</h1>
+                    <p>Instant arcade fun with 500+ unblocked browser games from multiple collections. Fresh from the oven!</p>
+                </div>
+            </div>
+            <button id="settings-btn" class="settings-btn">⚙️</button>
+        </div>
+    </header>
+
+    <!-- New Home Landing Section -->
+    <section class="home-landing">
+        <div class="welcome-section">
+            <div class="welcome-content">
+                <h1 class="main-title">Welcome to <span class="highlight">Pizza Games</span></h1>
+                <p class="subtitle">The hottest gaming experience with over 1000+ unblocked games ready to play!</p>
+                <div class="action-buttons">
+                    <button class="primary-btn" onclick="document.getElementById('search-input').focus()">🎮 Start Playing</button>
+                    <button class="secondary-btn" onclick="scrollToSection('featured-games')">⭐ Featured Games</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-elements">
+                    <div class="floating-game game1">🎯</div>
+                    <div class="floating-game game2">🚀</div>
+                </div>
+                <div class="pizza-slice">
+                    <div class="slice-content">🍕</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-banner">
+            <div class="stat-item">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Games</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Collections</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Fun</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Ads</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Games Section -->
+    <section id="featured-games" class="featured-section">
+        <div class="section-header">
+            <h2>🍕 Hot Picks This Week</h2>
+            <p>Handpicked games that are currently trending</p>
+        </div>
+        <div class="featured-grid">
+            <div class="featured-card">
+                <div class="card-image">🎮</div>
+                <h3>Action Games</h3>
+                <p>Fast-paced adventures and thrilling challenges</p>
+                <button class="category-btn" onclick="filterGames('action')">Play Now →</button>
+            </div>
+            <div class="featured-card">
+                <div class="card-image">🧩</div>
+                <h3>Puzzle Games</h3>
+                <p>Brain-teasing challenges for all skill levels</p>
+                <button class="category-btn" onclick="filterGames('puzzle')">Play Now →</button>
+            </div>
+            <div class="featured-card">
+                <div class="card-image">🏃</div>
+                <h3>Arcade Classics</h3>
+                <p>Timeless favorites that never get old</p>
+                <button class="category-btn" onclick="filterGames('arcade')">Play Now →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Access Section -->
+    <section class="quick-access">
+        <div class="quick-header">
+            <h2>⚡ Quick Play</h2>
+            <p>Jump into a random game or browse by category</p>
+        </div>
+        <div class="quick-buttons">
+            <button class="quick-btn random-btn" onclick="playRandomGame()">
+                <span class="btn-icon">🎲</span>
+                <span>Random Game</span>
+            </button>
+            <button class="quick-btn category-btn" onclick="showCategory('selenite')">
+                <span class="btn-icon">🌟</span>
+                <span>Selenite Collection</span>
+            </button>
+            <button class="quick-btn category-btn" onclick="showCategory('chickening')">
+                <span class="btn-icon">🐔</span>
+                <span>Chicken Vault</span>
+            </button>
+            <button class="quick-btn category-btn" onclick="showCategory('ugs')">
+                <span class="btn-icon">🎯</span>
+                <span>UGS Games</span>
+            </button>
+        </div>
+    </section>
+    <main>
+        <section id="game-library">
+            <div class="library-header">
+                <div>
+                    <p class="section-tag">Library</p>
+                    <h2>Game Library</h2>
+                </div>
+                <span class="library-note">Search by title or type to find your next game.</span>
+            </div>
+            <div class="search-wrap">
+                <input type="text" id="search-input" placeholder="Search games...">
+            </div>
+            <div id="games-grid"></div>
+        </section>
+        <section id="game-area" style="display: none;">
+            <h2 id="current-game-title"></h2>
+            <div id="game-content"></div>
+            <div class="game-controls">
+                <button id="fullscreen-btn">⛶ Fullscreen</button>
+                <button id="back-btn">Back to Library</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Settings</h2>
+            <div class="setting-item">
+                <label for="theme-toggle">Theme:</label>
+                <select id="theme-toggle">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <label for="sound-toggle">Sound Effects:</label>
+                <select id="sound-toggle">
+                    <option value="on">On</option>
+                    <option value="off">Off</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <label for="default-tic-tac-size">Default Tic-Tac-Toe Size:</label>
+                <select id="default-tic-tac-size">
+                    <option value="3">3x3</option>
+                    <option value="4">4x4</option>
+                    <option value="5">5x5</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <label for="animations-toggle">Animations:</label>
+                <select id="animations-toggle">
+                    <option value="on">On</option>
+                    <option value="off">Off</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <label for="optimization-toggle">Optimization:</label>
+                <select id="optimization-toggle">
+                    <option value="balanced">Balanced</option>
+                    <option value="performance">High Performance</option>
+                    <option value="quality">High Quality</option>
+                </select>
+            </div>
+            <button id="save-settings">Save Settings</button>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2026 Pizza Games. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/bubbls/ugs-singlefile@main/games.js"></script>
+</body>
+</html>
